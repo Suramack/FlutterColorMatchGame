@@ -1,12 +1,16 @@
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import 'dart:math';
 
-class Playbyu extends StatefulWidget {
+// import 'package:flutter_application_2/screens/Play.dart';
+
+class PlayScreen extends StatefulWidget {
   @override
-  _PlaybyuState createState() => _PlaybyuState();
+  _PlayScreenState createState() => _PlayScreenState();
 }
 
-class _PlaybyuState extends State<Playbyu> {
+class _PlayScreenState extends State<PlayScreen> {
   int _counter = 0, _primary = 0;
   int _elvb00 = 0,
       _elvb01 = 0,
@@ -28,6 +32,7 @@ class _PlaybyuState extends State<Playbyu> {
     Colors.pink,
     Colors.orange,
   ];
+
   Random randomIndex = new Random();
   void pointCalc(int _colorCheck) {
     if (_primary == _colorCheck) {
@@ -63,7 +68,8 @@ class _PlaybyuState extends State<Playbyu> {
             Container(
                 child: Text(
               '$_counter',
-              style: TextStyle(fontSize: _width * .25),
+              style:
+                  TextStyle(fontSize: _width * .25, color: _colors[_primary]),
             )),
             Container(
                 width: _width * .4,

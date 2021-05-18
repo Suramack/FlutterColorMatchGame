@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class PlayScreen extends StatefulWidget {
+class Playbyu extends StatefulWidget {
   @override
-  _PlayScreenState createState() => _PlayScreenState();
+  _PlaybyuState createState() => _PlaybyuState();
 }
 
-class _PlayScreenState extends State<PlayScreen> {
+class _PlaybyuState extends State<Playbyu> {
   int _counter = 0;
 
   int _a = 0;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_2/screens/Play.dart';
 import 'package:flutter_application_2/screens/PlaywithMack.dart';
+import 'package:flutter_application_2/screens/SignIn.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Container(
             margin:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * .1),
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * .001),
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Container(
             margin:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * .075),
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * .001),
             width: MediaQuery.of(context).size.width * 0.85,
             height: MediaQuery.of(context).size.height * 0.55,
             decoration: BoxDecoration(
@@ -61,12 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Spacer(),
                 ElevatedButton(
+                    //Play Elevated Button
                     style: ElevatedButton.styleFrom(
                         primary: Colors.pinkAccent,
                         onPrimary: Colors.pink[700]),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Playbyu()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlayScreen()));
                     },
                     child: Container(
                         width: MediaQuery.of(context).size.width * .70,
@@ -82,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ))),
                 Spacer(),
                 ElevatedButton(
+                    //Exit Elevated Button
                     style: ElevatedButton.styleFrom(
                         primary: Colors.pinkAccent,
                         onPrimary: Colors.pink[700]),
@@ -101,7 +106,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 Spacer(),
               ],
             ),
-          )
+          ),
+          Spacer(),
+          Container(
+            child: Row(
+              children: [
+                Spacer(
+                  flex: 2,
+                ),
+                Text(
+                  "Login to save your top score ",
+                  style: TextStyle(color: Colors.grey[600], fontSize: 15),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignIn()));
+                    },
+                    child:
+                        Text("Sign in", style: TextStyle(color: Colors.white))),
+                Spacer(),
+              ],
+            ),
+          ),
+          Spacer(
+            flex: 3,
+          ),
         ]));
   }
 }
