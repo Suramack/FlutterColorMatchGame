@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/screens/Home.dart';
-// import 'package:flutter_application_2/screens/Play.dart';
-// import 'package:flutter_application_2/screens/PlaywithMack.dart';
+// import 'package:flutter_application_2/screens/PlayScreen.dart';
 
 void main() {
   runApp(MyApp());

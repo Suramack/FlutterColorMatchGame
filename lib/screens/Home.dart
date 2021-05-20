@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_2/screens/Play.dart';
-import 'package:flutter_application_2/screens/PlaywithMack.dart';
-import 'package:flutter_application_2/screens/SignIn.dart';
+import 'package:flutter_application_2/screens/PlayScreen.dart';
+import 'package:flutter_application_2/screens/SignUp.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.purple[400],
           title: Text(

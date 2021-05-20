@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import "package:flutter/material.dart";
 import 'dart:math';
 
@@ -21,7 +19,8 @@ class _PlayScreenState extends State<PlayScreen> {
       _elvb20 = 0,
       _elvb21 = 0,
       _elvb22 = 0;
-  double _width = 0;
+  double _width = 0, _height = 0;
+  int _jui = 0;
   List<Color> _colors = <Color>[
     Colors.green,
     Colors.black,
@@ -32,13 +31,31 @@ class _PlayScreenState extends State<PlayScreen> {
     Colors.pink,
     Colors.orange,
   ];
+  List<double> _boxBorder = <double>[
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    15,
+    13,
+    11,
+    9,
+    7,
+    5,
+    3
+  ];
 
   Random randomIndex = new Random();
   void pointCalc(int _colorCheck) {
+    _jui >= 14 ? _jui = 0 : _jui++;
     if (_primary == _colorCheck) {
-      _counter++;
+      _counter = _counter + 10;
     } else if (_counter > 0) {
-      _counter--;
+      _counter = _counter - 5;
     }
   }
 
@@ -59,6 +76,7 @@ class _PlayScreenState extends State<PlayScreen> {
   @override
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width;
+    _height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           title: Text('Crack The Color'),
@@ -68,13 +86,32 @@ class _PlayScreenState extends State<PlayScreen> {
             Container(
                 child: Text(
               '$_counter',
-              style:
-                  TextStyle(fontSize: _width * .25, color: _colors[_primary]),
+              style: TextStyle(fontSize: _width * .25, color: Colors.black),
             )),
             Container(
-                width: _width * .4,
-                height: _width * .2,
-                color: _colors[_primary = randomIndex.nextInt(7)]),
+                width: _width * .22,
+                height: _height * .11,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(blurRadius: 30, color: Colors.grey),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                      //Main Color Box
+                      width: _width * .21,
+                      height: _width * .21,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boxBorder[_jui]),
+                          color: _colors[_primary = randomIndex.nextInt(7)]),
+                    ),
+                    Spacer(),
+                  ],
+                )),
             Spacer(),
             Padding(
               padding: EdgeInsets.all(_width * .1),
@@ -84,7 +121,9 @@ class _PlayScreenState extends State<PlayScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,
-                      boxShadow: [BoxShadow(blurRadius: 4)]),
+                      boxShadow: [
+                        BoxShadow(blurRadius: 4, color: Colors.grey)
+                      ]),
                   child: Column(children: [
                     Spacer(),
                     Container(
