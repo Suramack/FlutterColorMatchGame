@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_2/screens/Play.dart';
 import 'package:flutter_application_2/screens/PlayScreen.dart';
-import 'package:flutter_application_2/screens/SignUp.dart';
+import 'package:flutter_application_2/screens/SignIn.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -30,8 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   bottomLeft: Radius.circular(50),
                   bottomRight: Radius.circular(50),
                 ),
-                color: Colors.cyan,
-                boxShadow: [BoxShadow(blurRadius: 1)]),
+                color: Colors.amber[600],
+                boxShadow: [BoxShadow(blurRadius: 1, color: Colors.grey)]),
             width: MediaQuery.of(context).size.width * .5,
             height: MediaQuery.of(context).size.height * .125,
             child: Text(

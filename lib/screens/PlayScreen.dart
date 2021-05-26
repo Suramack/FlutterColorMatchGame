@@ -78,6 +78,7 @@ class _PlayScreenState extends State<PlayScreen> {
     _width = MediaQuery.of(context).size.width;
     _height = MediaQuery.of(context).size.height;
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text('Crack The Color'),
         ),
@@ -301,7 +302,16 @@ class _PlayScreenState extends State<PlayScreen> {
                     Spacer(),
                   ])),
             ),
-            Spacer()
+            Spacer(),
+            Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                child: Text('Skip'),
+              ),
+            ),
+            Spacer(),
           ],
         ));
   }
