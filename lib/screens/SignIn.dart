@@ -90,6 +90,7 @@ class _SignInState extends State<SignIn> {
                                 Spacer(),
                                 //password textfield
                                 TextFormField(
+                                  obscureText: true,
                                   validator: (value) => value.length < 6
                                       ? 'Please cross check Your password'
                                       : null,

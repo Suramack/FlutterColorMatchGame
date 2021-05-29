@@ -59,24 +59,6 @@ class _SignUpState extends State<SignUp> {
                     child: Column(children: [
                       Spacer(),
                       Container(
-                        //First Text Field Name
-                        width: _width * .7,
-                        child: TextFormField(
-                          validator: (value) =>
-                              value.isEmpty ? "Enter a NickName " : null,
-                          onChanged: (value) {
-                            setState(() => name = value);
-                          },
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.green)),
-                            labelText: "Name",
-                          ),
-                        ),
-                      ),
-                      Spacer(),
-                      Container(
                         width: _width * .7,
                         child: TextFormField(
                           validator: (value) =>
