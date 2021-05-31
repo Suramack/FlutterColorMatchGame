@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_application_2/screens/player_List.dart';
 import 'dart:math';
-
+import 'package:provider/provider.dart';
+import 'package:flutter_application_2/services/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter_application_2/screens/Play.dart';
 
 class PlayScreen extends StatefulWidget {
@@ -77,242 +81,246 @@ class _PlayScreenState extends State<PlayScreen> {
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width;
     _height = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return StreamProvider<QuerySnapshot>.value(
+      value: DatabaseService().players,
+      child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text('Crack The Color'),
         ),
-        body: Column(
-          children: [
-            Container(
-                child: Text(
-              '$_counter',
-              style: TextStyle(fontSize: _width * .25, color: Colors.black),
-            )),
-            Container(
-                width: _width * .22,
-                height: _height * .11,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(blurRadius: 30, color: Colors.grey),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Spacer(),
-                    AnimatedContainer(
-                      duration: Duration(milliseconds: 300),
-                      //Main Color Box
-                      width: _width * .21,
-                      height: _width * .21,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(_boxBorder[_jui]),
-                          color: _colors[_primary = randomIndex.nextInt(7)]),
-                    ),
-                    Spacer(),
-                  ],
-                )),
-            Spacer(),
-            Padding(
-              padding: EdgeInsets.all(_width * .1),
-              child: Container(
-                  width: MediaQuery.of(context).size.width * .9,
-                  height: MediaQuery.of(context).size.height * .4,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(blurRadius: 4, color: Colors.grey)
-                      ]),
-                  child: Column(children: [
-                    Spacer(),
-                    Container(
-                      child: Row(
-                        children: [
-                          Spacer(),
-                          ElevatedButton(
-                            //First ROW ElevatedButtons
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb00 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              // checkAllcolor();
-                              setState(() {
-                                pointCalc(_elvb00);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb01 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              // checkAllcolor();
-                              setState(() {
-                                pointCalc(_elvb01);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb02 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb02);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      //2nd Row ElevationButtons
-                      child: Row(
-                        children: [
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb10 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb10);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb11 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb11);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb12 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb12);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      child: Row(
-                        //3rd Row ElevatedButton
-                        children: [
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb20 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb20);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb21 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb21);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary:
-                                  _colors[_elvb22 = randomIndex.nextInt(7)],
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                pointCalc(_elvb22);
-                              });
-                            },
-                            child: Container(
-                              width: 40,
-                              height: 70,
-                            ),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ),
-                    Spacer(),
-                  ])),
-            ),
-            Spacer(),
-            Container(
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {});
-                },
-                child: Text('Skip'),
-              ),
-            ),
-            Spacer(),
-          ],
-        ));
+        body: PlayerList(),
+        //   children: [
+        //     Container(
+        //         child: Text(
+        //       '$_counter',
+        //       style: TextStyle(fontSize: _width * .25, color: Colors.black),
+        //     )),
+        //     Container(
+        //         width: _width * .22,
+        //         height: _height * .11,
+        //         decoration: BoxDecoration(
+        //           color: Colors.white,
+        //           boxShadow: [
+        //             BoxShadow(blurRadius: 30, color: Colors.grey),
+        //           ],
+        //         ),
+        //         child: Column(
+        //           children: [
+        //             Spacer(),
+        //             AnimatedContainer(
+        //               duration: Duration(milliseconds: 300),
+        //               //Main Color Box
+        //               width: _width * .21,
+        //               height: _width * .21,
+        //               decoration: BoxDecoration(
+        //                   borderRadius: BorderRadius.circular(_boxBorder[_jui]),
+        //                   color: _colors[_primary = randomIndex.nextInt(7)]),
+        //             ),
+        //             Spacer(),
+        //           ],
+        //         )),
+        //     Spacer(),
+        //     Padding(
+        //       padding: EdgeInsets.all(_width * .1),
+        //       child: Container(
+        //           width: MediaQuery.of(context).size.width * .9,
+        //           height: MediaQuery.of(context).size.height * .4,
+        //           decoration: BoxDecoration(
+        //               borderRadius: BorderRadius.circular(30),
+        //               color: Colors.white,
+        //               boxShadow: [
+        //                 BoxShadow(blurRadius: 4, color: Colors.grey)
+        //               ]),
+        //           child: Column(children: [
+        //             Spacer(),
+        //             Container(
+        //               child: Row(
+        //                 children: [
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     //First ROW ElevatedButtons
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb00 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       // checkAllcolor();
+        //                       setState(() {
+        //                         pointCalc(_elvb00);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb01 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       // checkAllcolor();
+        //                       setState(() {
+        //                         pointCalc(_elvb01);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb02 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb02);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                 ],
+        //               ),
+        //             ),
+        //             Spacer(),
+        //             Container(
+        //               //2nd Row ElevationButtons
+        //               child: Row(
+        //                 children: [
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb10 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb10);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb11 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb11);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb12 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb12);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                 ],
+        //               ),
+        //             ),
+        //             Spacer(),
+        //             Container(
+        //               child: Row(
+        //                 //3rd Row ElevatedButton
+        //                 children: [
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb20 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb20);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb21 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb21);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                   ElevatedButton(
+        //                     style: ElevatedButton.styleFrom(
+        //                       primary:
+        //                           _colors[_elvb22 = randomIndex.nextInt(7)],
+        //                     ),
+        //                     onPressed: () {
+        //                       setState(() {
+        //                         pointCalc(_elvb22);
+        //                       });
+        //                     },
+        //                     child: Container(
+        //                       width: 40,
+        //                       height: 70,
+        //                     ),
+        //                   ),
+        //                   Spacer(),
+        //                 ],
+        //               ),
+        //             ),
+        //             Spacer(),
+        //           ])),
+        //     ),
+        //     Spacer(),
+        //     Container(
+        //       child: ElevatedButton(
+        //         onPressed: () {
+        //           setState(() {});
+        //         },
+        //         child: Text('Skip'),
+        //       ),
+        //     ),
+        //     Spacer(),
+        //   ],
+        // )
+      ),
+    );
   }
 }

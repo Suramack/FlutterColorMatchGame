@@ -11,4 +11,9 @@ class DatabaseService {
         .document(uid)
         .setData({'name': name, 'age': age, 'strength': strength});
   }
+
+  //get players stream
+  Stream<QuerySnapshot> get players {
+    return myScoreCollection.snapshots();
+  }
 }
