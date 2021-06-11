@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_application_2/screens/player_List.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_2/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter_application_2/screens/Play.dart';
+import 'package:flutter_application_2/models/player.dart';
 
 class PlayScreen extends StatefulWidget {
   @override
@@ -81,7 +79,7 @@ class _PlayScreenState extends State<PlayScreen> {
   Widget build(BuildContext context) {
     _width = MediaQuery.of(context).size.width;
     _height = MediaQuery.of(context).size.height;
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Player>>.value(
       value: DatabaseService().players,
       child: Scaffold(
         resizeToAvoidBottomInset: false,

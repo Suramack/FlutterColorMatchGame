@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_2/models/player.dart';
 
 class DatabaseService {
   final String uid;
@@ -12,8 +13,18 @@ class DatabaseService {
         .setData({'name': name, 'age': age, 'strength': strength});
   }
 
+//Player list from snapshot
+  List<Player> _playerListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Player(
+          name: doc.data['name'] ?? '',
+          age: doc.data['age'] ?? 0,
+          strength: doc.data['strength'] ?? 0);
+    }).toList();
+  }
+
   //get players stream
-  Stream<QuerySnapshot> get players {
-    return myScoreCollection.snapshots();
+  Stream<List<Player>> get players {
+    return myScoreCollection.snapshots().map(_playerListFromSnapshot);
   }
 }
