@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_application_2/screens/Play.dart';
 import 'package:flutter_application_2/screens/PlayScreen.dart';
 import 'package:flutter_application_2/screens/SignIn.dart';
+import 'package:flutter_application_2/screens/levels.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -68,10 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         primary: Colors.pinkAccent,
                         onPrimary: Colors.pink[700]),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PlayScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Levels()));
                     },
                     child: Container(
                         width: MediaQuery.of(context).size.width * .70,
